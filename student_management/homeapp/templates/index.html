@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+
+<h1 class="mt-5 text-center">Student List</h1>
+
+<div class="d-flex justify-content-center">
+<table class="table table-striped w-50">
+        <thead>
+          <tr>
+            <th scope="col">SN</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Email Address</th>
+            <th colspan="2" >Action</th>
+          </tr>
+        </thead>
+        <tbody>
+                {% for s in data %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{s.first_name}}</td>
+            <td>{{s.last_name}}</td>
+            <td>{{s.Phone_no}}</td>
+            <td>{{s.email}}</td>
+            <td><a class="btn btn-primary btn-sm" href="{% url 'update' s.id %}">Update</a></td>
+            <td><a class="btn btn-danger btn-sm" href="{% url 'del' s.id %}" >Delete</a></td>
+          </tr>
+        </div>
+        {% for msg in messages %}
+        <div class="alert alert-danger" role="alert">
+          <p>{{msg}}</p>
+          {% endfor %}
+        </div>
+        {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock content %}

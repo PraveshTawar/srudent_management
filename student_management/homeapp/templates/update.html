@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Update Student {% endblock title %}
+{% block content %}
+
+<form method="post" action="{% url 'update_done' s.id %}" class="card container-fluid w-50" >
+    {% csrf_token %}
+        <h1>Update Student </h1>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">First Name</label>
+          <input type="text" value="{{s.first_name}}" name="frt_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Last_name</label>
+          <input type="text" value="{{s.last_name}}" name="lst_name" class="form-control" id="exampleInputPassword1" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Phone Number</label>
+          <input type="tel" value="{{s.Phone_no}}" name="phone" class="form-control" id="exampleInputPassword1" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Email</label>
+          <input type="email"  value="{{s.email}}" name="email" class="form-control" id="exampleInputPassword1" required>
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+        
+{% endblock content %}
